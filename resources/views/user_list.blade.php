@@ -13,7 +13,7 @@
 </head>
 <body class="container">
     <div class="alert alert-primary" role="alert" id="alert" style="display:none;">
-        A simple primary alert—check it out!
+        <h6 id="notif"></h6>
       </div>
       
     <form id="create-form">
@@ -28,7 +28,33 @@
         </div>
 
         <button type="button" id="btnAdd" class="btn btn-primary">Submit</button>
+        <a href="{{ route('/history') }}">Go to Alert logs</a>
       </form>
+
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Details</th>
+            <th scope="col">TimeStamp</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+            @foreach ($list as $user)
+          <tr>
+            <td>{{$user->id}}</td>
+            <td>{{$user->name}}</td>
+            <td>{{$user->detail}}</td>
+            <td>{{$user->created_at}}</td>
+            <td></td>
+         
+          </tr>
+          @endforeach
+        </tbody>
+      </table>
 
 
       <script>
@@ -62,7 +88,7 @@
                                 success: function(resp) {
 
                                     $('#alert').show(); 
-
+                                    $('#notif').html( response.success);
                                     // Inserted notification ID
                                     console.log('Notification ID:', resp.notification_id);
                              

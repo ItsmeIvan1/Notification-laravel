@@ -39,4 +39,11 @@ class UserController extends Controller
 
     
     }
+
+    public function listOfNotifLogs()
+    {
+        $notif = tbl_notification::all();
+
+        return view('notif_logs', compact('notif'));
+    }
 }

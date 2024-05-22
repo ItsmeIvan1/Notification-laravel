@@ -22,5 +22,7 @@ Route::post('/create', [UserController::class, 'create']);
 
 Route::post('/notif', [UserController::class, 'Notification']);
 
+Route::get('/History', [UserController::class, 'listOfNotifLogs'])->name('/history');
+
 
 

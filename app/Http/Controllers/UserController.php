@@ -27,6 +27,42 @@ class UserController extends Controller
 
     }
 
+    public function edit($id)
+    {
+        $user = list_user::find($id);
+
+        return response()->json($user);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $user = list_user::find($id);
+        $user->name = $request->input('name');
+        $user->detail = $request->input('detail');
+        $user->save();
+
+        if($user)
+        {
+            return response()->json([
+                'status' => 'TRUE',
+                 'data' => $user,
+                  'message' => 'Successfully update']);
+        }
+
+        else
+        {
+            return response()->json([
+                    'status' => 'FALSE',
+                    'message' => 'Error updating']);
+        }
+        
+
+        
+
+
+        
+    }
+
     public function Notification(Request $request)
     {
         $notif = new tbl_notification;

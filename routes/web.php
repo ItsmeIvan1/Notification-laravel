@@ -24,5 +24,9 @@ Route::post('/notif', [UserController::class, 'Notification']);
 
 Route::get('/History', [UserController::class, 'listOfNotifLogs'])->name('/history');
 
+Route::get('/edit-user/{id}', [UserController::class, 'edit'])->name('user.edit');
+
+Route::put('/update-user/{id}', [UserController::class, 'update']);
+
 
 
